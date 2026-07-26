@@ -3,470 +3,496 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diagnóstico Financeiro para E-commerce | Victor Oliveira</title>
-  <meta name="description" content="Diagnóstico financeiro para e-commerces que vendem, mas não enxergam o lucro com clareza. Entenda caixa, margens, riscos e oportunidades de melhoria." />
+  <title>Consultoria Financeira para E-commerce | Victor Oliveira</title>
+
   <style>
     :root {
-      --blue: #0F2A3D;
-      --blue-2: #163A54;
-      --green: #1F9D75;
-      --green-dark: #167A5B;
-      --gray: #F5F7FA;
-      --text: #1F2933;
-      --muted: #5B6773;
-      --white: #FFFFFF;
-      --border: #D9E2EC;
-      --shadow: 0 18px 45px rgba(15, 42, 61, 0.14);
+      --azul-escuro: #0B1F3A;
+      --azul-profundo: #07162A;
+      --azul-medio: #12385F;
+      --azul-claro: #EAF1F8;
+      --verde: #19A974;
+      --verde-escuro: #12845C;
+      --verde-claro: #E9F8F2;
+      --cinza-texto: #4B5563;
+      --cinza-claro: #F5F7FA;
+      --branco: #FFFFFF;
+      --borda: #E5E7EB;
+      --sombra: 0 18px 45px rgba(11, 31, 58, 0.10);
+      --radius: 18px;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      color: var(--text);
-      background: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--azul-escuro);
+      background-color: var(--branco);
       line-height: 1.6;
     }
 
-    a { text-decoration: none; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
 
-    .container {
-      width: min(1120px, calc(100% - 40px));
-      margin: 0 auto;
-    }
+    .container { width: min(1120px, 92%); margin: 0 auto; }
+    .section { padding: 96px 0; position: relative; }
+    .section-light { background: linear-gradient(180deg, #F5F7FA 0%, #FFFFFF 100%); }
+    .section-blue { background: linear-gradient(135deg, #EAF1F8 0%, #F7FAFC 100%); }
+    .section-green { background: linear-gradient(135deg, #E9F8F2 0%, #F7FAFC 100%); }
 
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      display: flex;
+    /*
+      RÓTULOS DAS SEÇÕES:
+      Ex.: "O problema", "A consultoria", "Quem sou eu".
+      Ajustado para não ficar verde sobre fundo azul.
+    */
+    .eyebrow {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 18px 0;
-    }
-
-    .brand {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(11, 31, 58, 0.08);
+      color: var(--azul-escuro);
+      border: 1px solid rgba(11, 31, 58, 0.10);
+      font-size: 1.02rem;
       font-weight: 800;
-      color: var(--blue);
-      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
     }
 
-    .brand span {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--muted);
-      letter-spacing: 0;
-      margin-top: 4px;
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--verde);
     }
+
+    .hero .eyebrow {
+      background: rgba(255, 255, 255, 0.10);
+      color: var(--branco);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    h1, h2, h3 { line-height: 1.13; letter-spacing: -0.035em; }
+
+    h1 {
+      font-size: clamp(2.45rem, 5vw, 4.55rem);
+      color: var(--branco);
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      font-size: clamp(2.25rem, 4.2vw, 3.35rem);
+      margin-bottom: 20px;
+    }
+
+    h3 { font-size: 1.34rem; margin-bottom: 12px; }
+    p { color: var(--cinza-texto); font-size: 1rem; }
+
+    .lead {
+      font-size: 1.18rem;
+      color: #D6E2F0;
+      max-width: 690px;
+      margin-bottom: 32px;
+    }
+
+    .section-intro { max-width: 760px; margin-bottom: 46px; }
+    .section-intro p { font-size: 1.09rem; }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 14px 22px;
-      border-radius: 999px;
-      background: var(--green);
-      color: var(--white);
+      gap: 10px;
+      padding: 15px 22px;
+      border-radius: 12px;
       font-weight: 800;
-      transition: 0.2s ease;
-      border: none;
+      transition: all 0.25s ease;
       cursor: pointer;
-      box-shadow: 0 12px 26px rgba(31, 157, 117, .25);
+      border: 1px solid transparent;
     }
 
-    .btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-primary {
+      background-color: var(--verde);
+      color: var(--branco);
+      box-shadow: 0 12px 28px rgba(25, 169, 116, 0.28);
+    }
+
+    .btn-primary:hover { background-color: var(--verde-escuro); transform: translateY(-2px); }
 
     .btn-secondary {
-      background: var(--white);
-      color: var(--blue);
-      box-shadow: none;
-      border: 1px solid var(--border);
+      color: var(--branco);
+      border-color: rgba(255, 255, 255, 0.22);
+      background-color: rgba(255, 255, 255, 0.06);
     }
 
-    .btn-secondary:hover { background: var(--gray); }
+    .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.12); transform: translateY(-2px); }
+    .btn-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+
+    .header { position: absolute; top: 0; width: 100%; z-index: 10; padding: 24px 0; }
+    .nav { display: flex; justify-content: space-between; align-items: center; }
+    .logo { color: var(--branco); font-weight: 900; font-size: 1.08rem; letter-spacing: -0.02em; }
+    .logo span { color: var(--verde); }
+    .nav-links { display: flex; gap: 24px; align-items: center; color: rgba(255, 255, 255, 0.82); font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--branco); }
 
     .hero {
-      background: radial-gradient(circle at top right, rgba(31,157,117,.18), transparent 34%), linear-gradient(135deg, var(--blue), var(--blue-2));
-      color: var(--white);
-      padding: 86px 0 70px;
+      position: relative;
+      background:
+        linear-gradient(135deg, rgba(11, 31, 58, 0.98), rgba(18, 56, 95, 0.94)),
+        radial-gradient(circle at top right, rgba(25, 169, 116, 0.26), transparent 35%);
+      padding: 160px 0 104px;
       overflow: hidden;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 48px;
-      align-items: center;
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -160px;
+      top: 120px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(25, 169, 116, 0.12);
+      filter: blur(8px);
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.12);
-      color: #DFF8EE;
-      font-weight: 700;
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
-
-    h1, h2, h3 { line-height: 1.12; margin: 0; letter-spacing: -0.04em; }
-
-    h1 {
-      font-size: clamp(42px, 6vw, 72px);
-      max-width: 820px;
-      margin-bottom: 22px;
-    }
-
-    h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      color: var(--blue);
-      margin-bottom: 18px;
-    }
-
-    h3 { font-size: 22px; color: var(--blue); margin-bottom: 10px; }
-
-    .hero p {
-      font-size: 20px;
-      color: rgba(255,255,255,.86);
-      margin: 0 0 28px;
-      max-width: 700px;
-    }
-
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
-
-    .microcopy { font-size: 14px !important; color: rgba(255,255,255,.72) !important; margin-top: 14px !important; }
+    .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
 
     .hero-card {
-      background: rgba(255,255,255,.96);
-      color: var(--text);
-      border-radius: 28px;
-      padding: 28px;
-      box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.20);
     }
 
-    .hero-card strong { color: var(--blue); }
+    .hero-card-title { color: var(--branco); font-size: 1.22rem; margin-bottom: 20px; font-weight: 900; }
+    .metric-list { display: grid; gap: 14px; }
+    .metric { padding: 16px; border-radius: 14px; background-color: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.10); }
+    .metric strong { color: var(--branco); display: block; margin-bottom: 4px; }
+    .metric span { color: #D6E2F0; font-size: 0.94rem; }
+    .hero-note { margin-top: 18px; color: #BFD0E4; font-size: 0.95rem; font-weight: 600; }
 
-    .check-list { list-style: none; padding: 0; margin: 18px 0 0; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
 
-    .check-list li {
+    .card {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--sombra);
+      border-top: 4px solid rgba(25, 169, 116, 0.55);
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      background: rgba(25, 169, 116, 0.12);
+      color: var(--verde-escuro);
       display: flex;
-      gap: 10px;
-      margin-bottom: 12px;
-      color: var(--muted);
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      margin-bottom: 18px;
     }
+
+    .card p { font-size: 0.99rem; }
+
+    .check-list, .x-list { list-style: none; display: grid; gap: 14px; margin-top: 22px; }
+    .check-list li, .x-list li { position: relative; padding-left: 32px; color: var(--cinza-texto); }
 
     .check-list li::before {
       content: "✓";
-      color: var(--green);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: rgba(25, 169, 116, 0.13);
+      color: var(--verde-escuro);
+      font-size: 0.85rem;
       font-weight: 900;
-    }
-
-    section { padding: 78px 0; }
-
-    .section-light { background: var(--gray); }
-
-    .lead {
-      font-size: 19px;
-      color: var(--muted);
-      max-width: 850px;
-      margin: 0 0 30px;
-    }
-
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-
-    .card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 26px;
-      box-shadow: 0 8px 20px rgba(15,42,61,.04);
-    }
-
-    .card p { color: var(--muted); margin: 0; }
-
-    .pain-box {
-      background: var(--white);
-      border-radius: 28px;
-      padding: 32px;
-      border: 1px solid var(--border);
-    }
-
-    .highlight {
-      background: var(--blue);
-      color: var(--white);
-      border-radius: 30px;
-      padding: 44px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 28px;
+      display: flex;
       align-items: center;
+      justify-content: center;
     }
 
-    .highlight h2 { color: var(--white); }
-    .highlight p { color: rgba(255,255,255,.82); margin: 0; }
+    .x-list li::before {
+      content: "×";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: rgba(220, 38, 38, 0.10);
+      color: #B91C1C;
+      font-size: 1rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     .steps { counter-reset: step; display: grid; gap: 18px; }
+    .step { counter-increment: step; display: grid; grid-template-columns: auto 1fr; gap: 18px; background-color: var(--branco); border: 1px solid var(--borda); border-radius: var(--radius); padding: 26px; box-shadow: 0 12px 28px rgba(11, 31, 58, 0.06); }
+    .step::before { content: counter(step); width: 46px; height: 46px; border-radius: 50%; background-color: var(--azul-escuro); color: var(--branco); display: flex; align-items: center; justify-content: center; font-weight: 900; }
 
-    .step {
-      position: relative;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 24px 24px 24px 78px;
+    .about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 48px; align-items: center; }
+    .photo-card { background: linear-gradient(135deg, var(--azul-escuro), var(--azul-medio)); border-radius: 24px; padding: 16px; box-shadow: var(--sombra); }
+    .photo-card img { border-radius: 18px; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background-color: #D1D5DB; }
+    .credentials { display: grid; gap: 12px; margin-top: 24px; }
+    .credential { padding: 16px 18px; border-radius: 14px; background-color: var(--branco); border: 1px solid var(--borda); color: var(--cinza-texto); box-shadow: 0 10px 25px rgba(11, 31, 58, 0.05); }
+    .credential strong { color: var(--azul-escuro); }
+
+    .faq { max-width: 860px; margin: 0 auto; }
+    details { background-color: var(--branco); border: 1px solid var(--borda); border-radius: 16px; padding: 20px 22px; margin-bottom: 14px; box-shadow: 0 10px 30px rgba(11, 31, 58, 0.05); }
+    summary { cursor: pointer; font-weight: 900; color: var(--azul-escuro); list-style: none; display: flex; justify-content: space-between; gap: 20px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 1.35rem; color: var(--verde); line-height: 1; }
+    details[open] summary::after { content: "−"; }
+    details p { margin-top: 14px; }
+
+    .final-cta { background: linear-gradient(135deg, var(--azul-escuro), var(--azul-medio)); color: var(--branco); border-radius: 28px; padding: 58px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; box-shadow: var(--sombra); }
+    .final-cta h2 { color: var(--branco); margin-bottom: 12px; }
+    .final-cta p { color: #D6E2F0; max-width: 680px; }
+
+    .footer { padding: 36px 0; background-color: var(--azul-profundo); color: rgba(255, 255, 255, 0.72); font-size: 0.92rem; }
+    .footer-content { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer strong { color: var(--branco); }
+
+    @media (max-width: 920px) {
+      .hero-grid, .about-grid, .final-cta { grid-template-columns: 1fr; }
+      .hero { padding-top: 138px; }
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .final-cta { padding: 38px; }
+      .nav-links { display: none; }
     }
 
-    .step::before {
-      counter-increment: step;
-      content: counter(step);
-      position: absolute;
-      left: 24px;
-      top: 24px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--green);
-      color: var(--white);
-      font-weight: 900;
-      display: grid;
-      place-items: center;
-    }
-
-    .step p { margin: 0; color: var(--muted); }
-
-    .split {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 42px;
-      align-items: start;
-    }
-
-    .faq details {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px 20px;
-      margin-bottom: 12px;
-    }
-
-    .faq summary {
-      cursor: pointer;
-      font-weight: 800;
-      color: var(--blue);
-    }
-
-    .faq p { color: var(--muted); margin-bottom: 0; }
-
-    .final-cta {
-      background: linear-gradient(135deg, var(--blue), #071A26);
-      color: var(--white);
-      text-align: center;
-    }
-
-    .final-cta h2 { color: var(--white); }
-    .final-cta p { color: rgba(255,255,255,.82); max-width: 740px; margin: 0 auto 28px; font-size: 18px; }
-
-    .footer {
-      padding: 28px 0;
-      background: #071A26;
-      color: rgba(255,255,255,.65);
-      font-size: 14px;
-      text-align: center;
-    }
-
-    @media (max-width: 880px) {
-      .hero-grid, .grid-2, .grid-3, .split, .highlight { grid-template-columns: 1fr; }
-      .hero { padding-top: 58px; }
-      .nav .btn { display: none; }
-      section { padding: 58px 0; }
-      .highlight { padding: 30px; }
+    @media (max-width: 560px) {
+      .section { padding: 68px 0; }
+      .hero-card, .card, .final-cta { padding: 24px; }
+      .btn, .btn-row { width: 100%; }
+      h1 { font-size: 2.35rem; }
+      h2 { font-size: 2.05rem; }
+      .eyebrow { font-size: 0.96rem; }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- IMPORTANTE: substitua 55SEUNUMERO pelo número real com DDI e DDD. Exemplo: 5511999999999 -->
-  <!-- Se quiser mudar a mensagem, altere o texto depois de ?text= -->
+  <!--
+    ALTERAR WHATSAPP:
+    Substitua todos os links https://wa.me/5500000000000 pelo seu número.
+  -->
 
-  <nav class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="#top">Victor Oliveira <span>Diagnóstico Financeiro para E-commerce</span></a>
-      <a class="btn" href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%2C%20Victor.%20Tenho%20interesse%20no%20Diagn%C3%B3stico%20Financeiro%20para%20E-commerce%20e%20gostaria%20de%20entender%20se%20faz%20sentido%20para%20minha%20empresa." target="_blank" rel="noopener">Falar no WhatsApp</a>
-    </div>
-  </nav>
-
-  <header class="hero" id="top">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">Para e-commerces a partir de R$ 50 mil/mês</div>
-        <h1>Seu e-commerce vende, mas o lucro não aparece?</h1>
-        <p>Descubra onde o dinheiro está escapando, quais riscos financeiros afetam sua operação e quais ações priorizar para melhorar a lucratividade do seu e-commerce.</p>
-        <div class="hero-actions">
-          <a class="btn" href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%2C%20Victor.%20Tenho%20interesse%20no%20Diagn%C3%B3stico%20Financeiro%20para%20E-commerce%20e%20gostaria%20de%20entender%20se%20faz%20sentido%20para%20minha%20empresa." target="_blank" rel="noopener">Falar com Victor no WhatsApp</a>
-          <a class="btn btn-secondary" href="#como-funciona">Como funciona</a>
-        </div>
-        <p class="microcopy">Clique no botão, envie uma mensagem e conte brevemente sobre a situação financeira do seu e-commerce.</p>
-      </div>
-
-      <div class="hero-card">
-        <h3>O diagnóstico ajuda você a entender:</h3>
-        <ul class="check-list">
-          <li>se a empresa está financeiramente saudável;</li>
-          <li>por que o lucro não acompanha o faturamento;</li>
-          <li>quais riscos financeiros exigem atenção;</li>
-          <li>onde estão os gargalos de caixa e margem;</li>
-          <li>quais ações priorizar para melhorar a lucratividade.</li>
-        </ul>
-      </div>
+  <header class="header">
+    <div class="container nav">
+      <a href="#" class="logo">Victor Oliveira<span>.</span></a>
+      <nav class="nav-links">
+        <a href="#consultoria">Consultoria</a>
+        <a href="#para-quem">Para quem é</a>
+        <a href="#sobre">Quem sou eu</a>
+        <a href="#faq">FAQ</a>
+      </nav>
     </div>
   </header>
 
-  <section class="section-light">
-    <div class="container split">
-      <div>
-        <h2>O faturamento cresce, mas o caixa continua apertado?</h2>
-        <p class="lead">Muitos e-commerces vendem mais, investem em tráfego, aumentam estoque e expandem a operação, mas continuam sem clareza sobre uma pergunta essencial: a empresa está realmente dando lucro?</p>
-      </div>
-      <div class="pain-box">
-        <ul class="check-list">
-          <li>O faturamento aumenta, mas o lucro não acompanha.</li>
-          <li>O dinheiro entra, mas o caixa está sempre apertado.</li>
-          <li>Você não sabe exatamente para onde o dinheiro está indo.</li>
-          <li>Não tem clareza sobre quais produtos realmente dão lucro.</li>
-          <li>Não sabe qual canal de venda traz resultado de verdade.</li>
-          <li>Toma decisões financeiras com base no feeling, não em indicadores.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <h2>O Diagnóstico Financeiro mostra o que os números do seu e-commerce estão tentando dizer</h2>
-      <p class="lead">O serviço analisa a realidade financeira da sua empresa para identificar gargalos, apontar riscos e revelar oportunidades de melhoria. O foco não é complicar com termos técnicos. O foco é gerar clareza para tomada de decisão.</p>
-      <div class="grid-3">
-        <div class="card"><h3>Clareza</h3><p>Entenda se o crescimento das vendas está realmente gerando resultado.</p></div>
-        <div class="card"><h3>Segurança</h3><p>Identifique riscos financeiros antes que eles comprometam a operação.</p></div>
-        <div class="card"><h3>Ação</h3><p>Priorize os ajustes que podem ter maior impacto na lucratividade.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-light">
-    <div class="container">
-      <h2>O que pode ser avaliado no diagnóstico</h2>
-      <p class="lead">Cada e-commerce tem uma realidade diferente. Por isso, a análise é personalizada conforme o momento da empresa, os dados disponíveis e os objetivos definidos.</p>
-      <div class="grid-3">
-        <div class="card"><h3>Rentabilidade</h3><p>Margem bruta, operacional, líquida, evolução dos resultados e fatores que pressionam o lucro.</p></div>
-        <div class="card"><h3>Liquidez e caixa</h3><p>Capacidade de honrar compromissos, disponibilidade de caixa e pressões de curto prazo.</p></div>
-        <div class="card"><h3>Capital de giro</h3><p>Necessidade de capital, ciclo financeiro, estoque, prazos de recebimento e pagamentos.</p></div>
-        <div class="card"><h3>Endividamento</h3><p>Nível de dívidas, composição das obrigações e dependência de capital de terceiros.</p></div>
-        <div class="card"><h3>Risco financeiro</h3><p>Indicadores de solvência, sinais de desequilíbrio e pontos críticos da operação.</p></div>
-        <div class="card"><h3>Gargalos operacionais</h3><p>Produtos, canais, custos, despesas, formação de preço e falta de indicadores.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="como-funciona">
-    <div class="container split">
-      <div>
-        <h2>Como funciona o processo</h2>
-        <p class="lead">O diagnóstico começa com uma conversa para entender se o serviço faz sentido para o momento do seu e-commerce. Depois disso, o escopo é definido de forma personalizada.</p>
-        <a class="btn" href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%2C%20Victor.%20Tenho%20interesse%20no%20Diagn%C3%B3stico%20Financeiro%20para%20E-commerce%20e%20gostaria%20de%20entender%20se%20faz%20sentido%20para%20minha%20empresa." target="_blank" rel="noopener">Iniciar conversa no WhatsApp</a>
-      </div>
-      <div class="steps">
-        <div class="step"><h3>Primeiro contato</h3><p>Você envia uma mensagem contando sobre seu e-commerce e sua principal dificuldade financeira.</p></div>
-        <div class="step"><h3>Entendimento da operação</h3><p>Victor avalia o momento da empresa, desafios e informações financeiras disponíveis.</p></div>
-        <div class="step"><h3>Definição do escopo</h3><p>São definidos objetivos, documentos necessários, prazo e investimento do projeto.</p></div>
-        <div class="step"><h3>Análise e entrega</h3><p>Os dados são analisados e você recebe pontos de atenção, riscos, oportunidades e recomendações.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-light">
-    <div class="container">
-      <h2>O que você pode receber ao final do diagnóstico</h2>
-      <p class="lead">Os entregáveis dependem do escopo contratado, mas podem incluir:</p>
-      <div class="grid-3">
-        <div class="card"><h3>Relatório financeiro</h3><p>Leitura organizada da situação financeira da operação.</p></div>
-        <div class="card"><h3>Parecer técnico</h3><p>Análise dos principais indicadores e pontos de atenção.</p></div>
-        <div class="card"><h3>Plano de ação</h3><p>Recomendações práticas e priorizadas para tomada de decisão.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container grid-2">
-      <div class="card">
-        <h2>Esse diagnóstico é para você se:</h2>
-        <ul class="check-list">
-          <li>Seu e-commerce fatura a partir de R$ 50 mil por mês.</li>
-          <li>Você vende, mas não enxerga o lucro com clareza.</li>
-          <li>O caixa vive apertado mesmo com vendas recorrentes.</li>
-          <li>Você quer crescer com mais segurança financeira.</li>
-          <li>Você precisa tomar decisões com base em números.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Talvez não seja para você se:</h2>
-        <ul class="check-list">
-          <li>Você busca apenas escrituração contábil mensal.</li>
-          <li>Você precisa exclusivamente de consultoria tributária.</li>
-          <li>Seu e-commerce ainda não tem operação validada.</li>
-          <li>Você não possui nenhuma informação financeira mínima.</li>
-          <li>Você procura uma solução genérica e automática.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-light">
-    <div class="container">
-      <div class="highlight">
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
         <div>
-          <h2>Por que esse diagnóstico é diferente?</h2>
-          <p>Análise feita por contador especializado, com recomendações personalizadas, linguagem simples para empresários e foco em decisões práticas. Não é relatório automático. Não é serviço contábil recorrente.</p>
+          <span class="eyebrow">Consultoria financeira para e-commerce</span>
+          <!-- ALTERAR TEXTO PRINCIPAL -->
+          <h1>Você sente que seu e-commerce vende, mas ainda falta clareza sobre lucro, caixa e margem?</h1>
+          <p class="lead">Ajudo donos de e-commerce a entender seus números, identificar gargalos financeiros e tomar decisões mais seguras sobre lucro, caixa, margem e crescimento.</p>
+          <div class="btn-row">
+            <a href="https://wa.me/5500000000000?text=Olá,%20quero%20solicitar%20uma%20análise%20da%20minha%20empresa" class="btn btn-primary" target="_blank">Quero entender minha empresa</a>
+            <a href="#consultoria" class="btn btn-secondary">Como funciona</a>
+          </div>
+          <p class="hero-note">Contador formado pela Unioeste | Pós-graduando em Finanças e Controladoria</p>
         </div>
-        <a class="btn" href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%2C%20Victor.%20Tenho%20interesse%20no%20Diagn%C3%B3stico%20Financeiro%20para%20E-commerce%20e%20gostaria%20de%20entender%20se%20faz%20sentido%20para%20minha%20empresa." target="_blank" rel="noopener">Falar no WhatsApp</a>
+
+        <aside class="hero-card">
+          <div class="hero-card-title">O que analisamos na prática</div>
+          <div class="metric-list">
+            <div class="metric"><strong>Lucro real</strong><span>Entendimento da rentabilidade além do faturamento.</span></div>
+            <div class="metric"><strong>Fluxo de caixa</strong><span>Leitura da geração de caixa e dos riscos de descasamento.</span></div>
+            <div class="metric"><strong>Margens e custos</strong><span>Análise de produtos, despesas, frete, comissões e operação.</span></div>
+            <div class="metric"><strong>Decisões de crescimento</strong><span>Expansão com mais segurança financeira e menos improviso.</span></div>
+          </div>
+        </aside>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="faq">
-    <div class="container">
-      <h2>Perguntas frequentes</h2>
-      <details><summary>O diagnóstico substitui minha contabilidade?</summary><p>Não. O diagnóstico não substitui sua contabilidade e não tem como objetivo fazer escrituração, apuração de impostos ou obrigações acessórias.</p></details>
-      <details><summary>Vocês fazem planejamento tributário?</summary><p>Não é o foco deste serviço. A análise é voltada para rentabilidade, caixa, capital de giro, endividamento, riscos financeiros e oportunidades de melhoria.</p></details>
-      <details><summary>Preciso ter todos os relatórios prontos?</summary><p>Não necessariamente. Na conversa inicial, avaliamos quais informações estão disponíveis e o que pode ser analisado.</p></details>
-      <details><summary>Quanto custa o diagnóstico?</summary><p>O investimento depende do escopo, profundidade, documentos disponíveis e objetivos do projeto. O valor é definido após a conversa inicial.</p></details>
-      <details><summary>Serve para marketplace?</summary><p>Pode servir. Se sua empresa vende em marketplace, loja própria ou múltiplos canais, isso será considerado na análise inicial.</p></details>
-    </div>
-  </section>
+    <section class="section section-blue">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">O problema</span>
+          <h2>Vender mais nem sempre significa ganhar mais.</h2>
+          <p>Muitos e-commerces crescem em faturamento, aumentam o volume de pedidos, investem mais em tráfego e ampliam estoque. Mas, mesmo assim, o lucro não aparece com a mesma força.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card"><div class="card-icon">01</div><h3>Faturamento sem lucro</h3><p>Crescer em vendas sem entender margens, custos e despesas pode esconder problemas importantes na operação.</p></div>
+          <div class="card"><div class="card-icon">02</div><h3>Caixa apertado</h3><p>Mesmo vendendo, a empresa pode sofrer com falta de caixa por estoque, prazos, despesas e decisões sem planejamento financeiro.</p></div>
+          <div class="card"><div class="card-icon">03</div><h3>Decisões pelo feeling</h3><p>Sem indicadores confiáveis, decisões sobre anúncios, estoque, preço e crescimento acabam dependendo mais de percepção do que de números.</p></div>
+        </div>
+      </div>
+    </section>
 
-  <section class="final-cta">
-    <div class="container">
-      <h2>Quer entender de verdade a saúde financeira do seu e-commerce?</h2>
-      <p>Se o seu e-commerce vende, mas você ainda não tem clareza sobre lucro, caixa, margens e riscos financeiros, o diagnóstico pode ajudar você a enxergar o que está acontecendo por trás dos números.</p>
-      <a class="btn" href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%2C%20Victor.%20Tenho%20interesse%20no%20Diagn%C3%B3stico%20Financeiro%20para%20E-commerce%20e%20gostaria%20de%20entender%20se%20faz%20sentido%20para%20minha%20empresa." target="_blank" rel="noopener">Falar com Victor no WhatsApp</a>
-    </div>
-  </section>
+    <section class="section" id="consultoria">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">A consultoria</span>
+          <h2>Uma consultoria para transformar números em decisões.</h2>
+          <p>A consultoria financeira para e-commerce é um trabalho personalizado para ajudar você a enxergar com mais clareza a realidade financeira da sua operação.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card"><div class="card-icon">?</div><h3>Minha empresa é lucrativa?</h3><p>Análise da rentabilidade da operação, considerando custos, despesas, margem e estrutura financeira.</p></div>
+          <div class="card"><div class="card-icon">?</div><h3>Onde o dinheiro está preso?</h3><p>Entendimento de gargalos relacionados a caixa, estoque, prazos, despesas e capital de giro.</p></div>
+          <div class="card"><div class="card-icon">?</div><h3>Quais produtos e canais geram resultado?</h3><p>Avaliação de produtos, categorias ou canais que podem contribuir mais ou menos para o resultado financeiro.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-green">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">Áreas analisadas</span>
+          <h2>A análise é personalizada para a realidade de cada empresa.</h2>
+          <p>Não existe um pacote engessado de entregáveis. A profundidade e o foco da análise dependem do momento do negócio, dos dados disponíveis e dos principais desafios da operação.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card"><div class="card-icon">01</div><h3>Rentabilidade e lucro</h3><p>Entendimento da lucratividade da operação e da conversão do faturamento em resultado.</p></div>
+          <div class="card"><div class="card-icon">02</div><h3>Caixa e capital de giro</h3><p>Análise da dinâmica do caixa, necessidade de capital de giro e gargalos financeiros.</p></div>
+          <div class="card"><div class="card-icon">03</div><h3>Precificação e margem</h3><p>Avaliação de preços, custos, taxas, fretes, impostos e impactos na margem.</p></div>
+          <div class="card"><div class="card-icon">04</div><h3>Produtos e canais</h3><p>Leitura de produtos, categorias e canais de venda sob a ótica de resultado financeiro.</p></div>
+          <div class="card"><div class="card-icon">05</div><h3>Endividamento e riscos</h3><p>Identificação de compromissos, dívidas e riscos que podem limitar o crescimento.</p></div>
+          <div class="card"><div class="card-icon">06</div><h3>Indicadores financeiros</h3><p>Definição e interpretação dos indicadores que ajudam a acompanhar a saúde financeira da empresa.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">Como funciona</span>
+          <h2>Um processo objetivo, com foco em entendimento e decisão.</h2>
+          <p>A consultoria é conduzida em etapas para entender a realidade do negócio antes de propor qualquer direcionamento.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div><h3>Conversa inicial</h3><p>Entendimento do negócio, momento atual, principais desafios e objetivos do empresário.</p></div></div>
+          <div class="step"><div><h3>Análise financeira da operação</h3><p>Avaliação dos dados disponíveis conforme a estrutura e maturidade financeira da empresa.</p></div></div>
+          <div class="step"><div><h3>Apresentação dos achados</h3><p>Discussão dos principais gargalos, riscos, oportunidades e pontos de atenção identificados.</p></div></div>
+          <div class="step"><div><h3>Próximos passos</h3><p>Definição de possíveis caminhos e, se fizer sentido, possibilidade de acompanhamento posterior.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-green">
+      <div class="container">
+        <div class="grid-2">
+          <div>
+            <span class="eyebrow">Diferencial</span>
+            <h2>Não entrego apenas números. Entrego interpretação.</h2>
+            <p>Muitos empresários possuem dados, planilhas, relatórios e informações de venda. O desafio é entender o que esses números dizem sobre a operação e quais decisões devem ser tomadas.</p>
+          </div>
+          <div class="card">
+            <h3>A consultoria não é:</h3>
+            <ul class="x-list">
+              <li>Uma análise automática feita por IA.</li>
+              <li>Um relatório genérico igual para todos.</li>
+              <li>Apenas contabilidade tradicional.</li>
+            </ul>
+            <h3 style="margin-top: 28px;">A consultoria é:</h3>
+            <ul class="check-list">
+              <li>Uma análise personalizada da realidade financeira da empresa.</li>
+              <li>Um trabalho de interpretação e tomada de decisão.</li>
+              <li>Um apoio estratégico para crescer com mais controle.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-blue" id="para-quem">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">Para quem é</span>
+          <h2>Indicada para empresários que querem crescer com mais controle.</h2>
+          <p>A consultoria é mais adequada para operações que já possuem vendas recorrentes e precisam aprofundar a gestão financeira.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card"><h3>Essa consultoria é para você se:</h3><ul class="check-list"><li>Seu e-commerce já possui operação validada.</li><li>Você quer crescer com segurança.</li><li>Quer entender melhor lucro e caixa.</li><li>Precisa tomar decisões baseadas em números.</li></ul></div>
+          <div class="card"><h3>Não é para você se:</h3><ul class="x-list"><li>Procura apenas contabilidade.</li><li>Busca somente planejamento tributário.</li><li>Quer uma solução automática e genérica.</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="sobre">
+      <div class="container about-grid">
+        <div class="photo-card">
+          <!-- ALTERAR FOTO: substitua o src abaixo pela foto do Victor -->
+          <img src="https://via.placeholder.com/600x750.png?text=Foto+Victor+Oliveira" alt="Foto de Victor Oliveira" />
+        </div>
+        <div>
+          <span class="eyebrow">Quem sou eu</span>
+          <h2>Victor Oliveira</h2>
+          <p>Sou contador formado pela Unioeste, pós-graduando em Finanças e Controladoria, com quase 5 anos de experiência atuando com análise de empresas, contabilidade e informações financeiras.</p>
+          <p style="margin-top: 16px;">Meu foco é ajudar empresas a utilizarem seus números para tomar decisões melhores, conectando informações contábeis, financeiras e gerenciais à realidade da operação.</p>
+          <div class="credentials">
+            <div class="credential"><strong>Formação:</strong> Contador formado pela Unioeste.</div>
+            <div class="credential"><strong>Especialização:</strong> Pós-graduando em Finanças e Controladoria.</div>
+            <div class="credential"><strong>Experiência:</strong> Quase 5 anos atendendo empresas com análise, contabilidade e informações financeiras.</div>
+            <div class="credential"><strong>Foco:</strong> Ajudar empresas a utilizarem números para tomar decisões melhores.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-intro" style="margin-left: auto; margin-right: auto; text-align: center;">
+          <span class="eyebrow">FAQ</span>
+          <h2>Perguntas frequentes</h2>
+          <p>Veja as principais dúvidas sobre a consultoria financeira para e-commerce.</p>
+        </div>
+        <div class="faq">
+          <details><summary>A consultoria substitui minha contabilidade?</summary><p>Não. A consultoria não substitui a contabilidade regular da empresa. O foco é análise financeira, interpretação dos números e apoio à tomada de decisão.</p></details>
+          <details><summary>Preciso ter todos os relatórios financeiros organizados?</summary><p>Não necessariamente. Ter relatórios organizados ajuda, mas a consultoria também pode começar identificando quais informações existem e quais precisam ser estruturadas.</p></details>
+          <details><summary>Serve para empresas pequenas?</summary><p>Sim, desde que a empresa já tenha uma operação validada e necessidade real de entender melhor seus números.</p></details>
+          <details><summary>Vocês fazem gestão financeira completa?</summary><p>A proposta principal é consultiva: análise, diagnóstico e direcionamento financeiro. Caso a empresa precise de uma gestão financeira recorrente ou operacional, isso pode ser avaliado separadamente.</p></details>
+          <details><summary>Quanto custa?</summary><p>O investimento depende da complexidade da operação, profundidade da análise e necessidades específicas da empresa. Após uma conversa inicial é possível definir o melhor formato.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="final-cta">
+          <div>
+            <h2>Quer entender melhor a saúde financeira do seu e-commerce?</h2>
+            <p>Solicite uma análise inicial para avaliar o momento da sua empresa e entender como a consultoria pode ajudar.</p>
+          </div>
+          <a href="https://wa.me/5500000000000?text=Olá,%20quero%20solicitar%20uma%20análise%20da%20minha%20empresa" class="btn btn-primary" target="_blank">Solicitar uma análise da minha empresa</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
-    <div class="container">© Victor Oliveira — Diagnóstico Financeiro para E-commerce. Este serviço não substitui contabilidade recorrente, consultoria tributária ou obrigações acessórias.</div>
+    <div class="container footer-content">
+      <div><strong>Victor Oliveira</strong> — Consultoria financeira para e-commerce</div>
+      <div>© 2026. Todos os direitos reservados.</div>
+    </div>
   </footer>
-
 </body>
 </html>
