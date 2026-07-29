@@ -3,292 +3,959 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Consultoria Financeira para E-commerce | Victor Oliveira</title>
+  <meta name="description" content="Implantação de DRE Gerencial personalizada para e-commerces que precisam entender lucro, margens, custos e despesas para tomar decisões com mais segurança." />
+  <title>Clareza Financeira para E-commerce | Victor Oliveira</title>
 
   <style>
     :root {
-      --azul-escuro: #0B1F3A;
-      --azul-profundo: #07162A;
-      --azul-medio: #12385F;
-      --azul-claro: #EAF1F8;
-      --verde: #19A974;
-      --verde-escuro: #12845C;
-      --verde-claro: #E9F8F2;
-      --cinza-texto: #4B5563;
-      --cinza-claro: #F5F7FA;
+      --azul-950: #07162A;
+      --azul-900: #0B1F3A;
+      --azul-800: #12385F;
+      --azul-100: #EAF0F6;
+      --verde-600: #17865E;
+      --verde-500: #19A974;
+      --verde-100: #E8F5EF;
+      --texto: #263445;
+      --texto-suave: #5D6978;
+      --fundo: #FFFFFF;
+      --fundo-neutro: #F4F6F8;
+      --fundo-quente: #F7F6F2;
+      --borda: #DDE3E9;
       --branco: #FFFFFF;
-      --borda: #E5E7EB;
-      --sombra: 0 18px 45px rgba(11, 31, 58, 0.10);
-      --radius: 18px;
+      --display: Georgia, "Times New Roman", serif;
+      --sans: "Segoe UI", Arial, Helvetica, sans-serif;
+      --container: 1160px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--azul-escuro);
-      background-color: var(--branco);
-      line-height: 1.6;
+      font-family: var(--sans);
+      color: var(--azul-900);
+      background: var(--fundo);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    .container { width: min(1120px, 92%); margin: 0 auto; }
-    .section { padding: 96px 0; position: relative; }
-    .section-light { background: linear-gradient(180deg, #F5F7FA 0%, #FFFFFF 100%); }
-    .section-blue { background: linear-gradient(135deg, #EAF1F8 0%, #F7FAFC 100%); }
-    .section-green { background: linear-gradient(135deg, #E9F8F2 0%, #F7FAFC 100%); }
+    img {
+      display: block;
+      max-width: 100%;
+    }
 
-    /*
-      RÓTULOS DAS SEÇÕES:
-      Ex.: "O problema", "A consultoria", "Quem sou eu".
-      Ajustado para não ficar verde sobre fundo azul.
-    */
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(var(--container), 92%);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 112px 0;
+    }
+
+    .section-neutral {
+      background: var(--fundo-neutro);
+    }
+
+    .section-warm {
+      background: var(--fundo-quente);
+    }
+
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(11, 31, 58, 0.08);
-      color: var(--azul-escuro);
-      border: 1px solid rgba(11, 31, 58, 0.10);
-      font-size: 1.02rem;
+      display: block;
+      margin-bottom: 22px;
+      color: var(--verde-600);
+      font-size: 0.78rem;
       font-weight: 800;
-      margin-bottom: 20px;
-      letter-spacing: -0.01em;
+      letter-spacing: 0.15em;
+      line-height: 1.2;
+      text-transform: uppercase;
     }
 
-    .eyebrow::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: var(--verde);
+    .hero .eyebrow,
+    .dark-section .eyebrow {
+      color: #78D6B3;
     }
 
-    .hero .eyebrow {
-      background: rgba(255, 255, 255, 0.10);
-      color: var(--branco);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+    h1,
+    h2,
+    h3 {
+      text-wrap: balance;
     }
 
-    h1, h2, h3 { line-height: 1.13; letter-spacing: -0.035em; }
+    h1,
+    h2 {
+      font-family: var(--display);
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+    }
 
     h1 {
-      font-size: clamp(2.45rem, 5vw, 4.55rem);
+      max-width: 780px;
+      margin-bottom: 28px;
       color: var(--branco);
-      margin-bottom: 22px;
+      font-size: clamp(3.15rem, 5.8vw, 5.75rem);
     }
 
     h2 {
-      font-size: clamp(2.25rem, 4.2vw, 3.35rem);
-      margin-bottom: 20px;
+      max-width: 820px;
+      margin-bottom: 24px;
+      font-size: clamp(2.55rem, 4.7vw, 4.65rem);
     }
 
-    h3 { font-size: 1.34rem; margin-bottom: 12px; }
-    p { color: var(--cinza-texto); font-size: 1rem; }
-
-    .lead {
-      font-size: 1.18rem;
-      color: #D6E2F0;
-      max-width: 690px;
-      margin-bottom: 32px;
+    h3 {
+      font-size: 1.25rem;
+      line-height: 1.3;
     }
 
-    .section-intro { max-width: 760px; margin-bottom: 46px; }
-    .section-intro p { font-size: 1.09rem; }
+    p {
+      color: var(--texto-suave);
+      font-size: 1.04rem;
+    }
+
+    .section-heading {
+      max-width: 850px;
+      margin-bottom: 64px;
+    }
+
+    .section-heading p {
+      max-width: 730px;
+      font-size: 1.16rem;
+    }
+
+    .section-heading--center {
+      max-width: 980px;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+    }
+
+    .section-heading--center h2,
+    .section-heading--center p {
+      margin-right: auto;
+      margin-left: auto;
+    }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 15px 22px;
-      border-radius: 12px;
-      font-weight: 800;
-      transition: all 0.25s ease;
-      cursor: pointer;
+      min-height: 54px;
+      padding: 15px 23px;
       border: 1px solid transparent;
+      border-radius: 8px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      line-height: 1.2;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
     .btn-primary {
-      background-color: var(--verde);
+      background: var(--verde-500);
       color: var(--branco);
-      box-shadow: 0 12px 28px rgba(25, 169, 116, 0.28);
     }
 
-    .btn-primary:hover { background-color: var(--verde-escuro); transform: translateY(-2px); }
-
-    .btn-secondary {
-      color: var(--branco);
-      border-color: rgba(255, 255, 255, 0.22);
-      background-color: rgba(255, 255, 255, 0.06);
+    .btn-primary:hover {
+      background: var(--verde-600);
     }
 
-    .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.12); transform: translateY(-2px); }
-    .btn-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .btn-outline {
+      border-color: rgba(255, 255, 255, 0.32);
+      color: var(--branco);
+    }
 
-    .header { position: absolute; top: 0; width: 100%; z-index: 10; padding: 24px 0; }
-    .nav { display: flex; justify-content: space-between; align-items: center; }
-    .logo { color: var(--branco); font-weight: 900; font-size: 1.08rem; letter-spacing: -0.02em; }
-    .logo span { color: var(--verde); }
-    .nav-links { display: flex; gap: 24px; align-items: center; color: rgba(255, 255, 255, 0.82); font-size: 0.95rem; }
-    .nav-links a:hover { color: var(--branco); }
+    .btn-outline:hover {
+      border-color: rgba(255, 255, 255, 0.62);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 20;
+      width: 100%;
+      padding: 26px 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      color: var(--branco);
+      font-size: 1.06rem;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+    }
+
+    .logo span {
+      color: var(--verde-500);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--branco);
+    }
 
     .hero {
       position: relative;
-      background:
-        linear-gradient(135deg, rgba(11, 31, 58, 0.98), rgba(18, 56, 95, 0.94)),
-        radial-gradient(circle at top right, rgba(25, 169, 116, 0.26), transparent 35%);
-      padding: 160px 0 104px;
       overflow: hidden;
+      padding: 176px 0 124px;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(25, 169, 116, 0.19), transparent 27%),
+        linear-gradient(128deg, var(--azul-950) 0%, var(--azul-900) 62%, #143A60 100%);
     }
 
-    .hero::after {
-      content: "";
+    .hero::before {
       position: absolute;
-      right: -160px;
-      top: 120px;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: rgba(25, 169, 116, 0.12);
-      filter: blur(8px);
+      inset: 0;
+      content: "";
+      opacity: 0.13;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to right, transparent, #000 62%);
     }
 
-    .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
-
-    .hero-card {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: var(--radius);
-      padding: 30px;
-      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.20);
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1.42fr) minmax(300px, 0.58fr);
+      gap: 78px;
+      align-items: start;
     }
 
-    .hero-card-title { color: var(--branco); font-size: 1.22rem; margin-bottom: 20px; font-weight: 900; }
-    .metric-list { display: grid; gap: 14px; }
-    .metric { padding: 16px; border-radius: 14px; background-color: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.10); }
-    .metric strong { color: var(--branco); display: block; margin-bottom: 4px; }
-    .metric span { color: #D6E2F0; font-size: 0.94rem; }
-    .hero-note { margin-top: 18px; color: #BFD0E4; font-size: 0.95rem; font-weight: 600; }
-
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
-
-    .card {
-      background: var(--branco);
-      border: 1px solid var(--borda);
-      border-radius: var(--radius);
-      padding: 30px;
-      box-shadow: var(--sombra);
-      border-top: 4px solid rgba(25, 169, 116, 0.55);
+    .hero-lead {
+      max-width: 760px;
+      margin-bottom: 35px;
+      color: #D8E3EF;
+      font-size: clamp(1.08rem, 1.7vw, 1.3rem);
+      line-height: 1.65;
     }
 
-    .card-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 13px;
-      background: rgba(25, 169, 116, 0.12);
-      color: var(--verde-escuro);
-      display: flex;
+    .hero-note {
+      margin-top: 25px;
+      color: #AEBFD2;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .hero-summary {
+      margin-top: 37px;
+      padding: 10px 0 8px 36px;
+      border-left: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .hero-summary-title {
+      margin-bottom: 10px;
+      color: var(--branco);
+      font-family: var(--display);
+      font-size: 1.75rem;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .hero-summary-intro {
+      margin-bottom: 28px;
+      color: #B9CADC;
+      font-size: 0.96rem;
+    }
+
+    .summary-list {
+      list-style: none;
+    }
+
+    .summary-list li {
+      padding: 18px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .summary-list strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--branco);
+      font-size: 1.02rem;
+    }
+
+    .summary-list span {
+      color: #B9CADC;
+      font-size: 0.92rem;
+    }
+
+    .split-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 92px;
+      align-items: stretch;
+    }
+
+    .split-copy p {
+      max-width: 610px;
+      font-size: 1.14rem;
+    }
+
+    .issue-list {
+      display: grid;
+      grid-template-rows: repeat(3, minmax(0, 1fr));
+      align-self: stretch;
+      margin-top: 37px;
+      border-top: 1px solid var(--borda);
+    }
+
+    .issue {
+      display: grid;
+      grid-template-columns: minmax(150px, 0.38fr) 1fr;
+      gap: 30px;
       align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      margin-bottom: 18px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--borda);
     }
 
-    .card p { font-size: 0.99rem; }
+    .issue h3 {
+      color: var(--azul-900);
+    }
 
-    .check-list, .x-list { list-style: none; display: grid; gap: 14px; margin-top: 22px; }
-    .check-list li, .x-list li { position: relative; padding-left: 32px; color: var(--cinza-texto); }
+    .comparison-intro {
+      max-width: 980px;
+      margin: 0 auto 52px;
+      text-align: center;
+    }
+
+    .comparison-intro h2 {
+      max-width: 940px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .comparison-intro p {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 1.14rem;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid #D5D2C9;
+      background: rgba(255, 255, 255, 0.48);
+    }
+
+    .comparison-column {
+      padding: 48px;
+    }
+
+    .comparison-column + .comparison-column {
+      border-left: 1px solid #D5D2C9;
+      background: var(--branco);
+    }
+
+    .comparison-label {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--texto-suave);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .comparison-column:last-child .comparison-label {
+      color: var(--verde-600);
+    }
+
+    .comparison-column h3 {
+      margin-bottom: 14px;
+      font-family: var(--display);
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 500;
+      letter-spacing: -0.035em;
+    }
+
+    .plain-list {
+      display: grid;
+      gap: 0;
+      margin-top: 28px;
+      list-style: none;
+    }
+
+    .plain-list li {
+      position: relative;
+      padding: 16px 0 16px 24px;
+      border-top: 1px solid var(--borda);
+      color: var(--texto);
+    }
+
+    .plain-list li::before {
+      position: absolute;
+      top: 25px;
+      left: 0;
+      width: 8px;
+      height: 2px;
+      content: "";
+      background: var(--verde-500);
+    }
+
+    .comparison-note {
+      margin-top: 28px;
+      color: var(--azul-900);
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .offer-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 84px;
+      align-items: start;
+    }
+
+    .offer-copy {
+      position: sticky;
+      top: 42px;
+      padding-right: 16px;
+    }
+
+    .offer-copy p {
+      max-width: 560px;
+      font-size: 1.14rem;
+    }
+
+    .feature-list {
+      border-top: 1px solid var(--borda);
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 30px;
+      padding: 27px 0;
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .feature h3 {
+      font-family: var(--display);
+      font-size: 1.58rem;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .process-step {
+      min-height: 260px;
+      padding: 36px 32px 38px 0;
+    }
+
+    .process-step + .process-step {
+      padding-left: 32px;
+      border-left: 1px solid var(--borda);
+    }
+
+    .process-label {
+      display: block;
+      margin-bottom: 48px;
+      color: var(--verde-600);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .process-step h3 {
+      margin-bottom: 13px;
+      font-family: var(--display);
+      font-size: 1.58rem;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+    }
+
+    .dark-section {
+      background: var(--azul-950);
+      color: var(--branco);
+    }
+
+    .dark-section h2 {
+      color: var(--branco);
+    }
+
+    .interpretation-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+      gap: 92px;
+      align-items: stretch;
+    }
+
+    .interpretation-copy p {
+      max-width: 700px;
+      color: #BAC9D8;
+      font-size: 1.14rem;
+    }
+
+    .interpretation-copy p + p {
+      margin-top: 20px;
+    }
+
+    .interpretation-list {
+      display: grid;
+      grid-template-rows: repeat(5, minmax(0, 1fr));
+      align-self: stretch;
+      margin-top: 37px;
+      border-top: 1px solid rgba(255, 255, 255, 0.22);
+      list-style: none;
+    }
+
+    .interpretation-list li {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+      color: #E6EDF5;
+    }
+
+    .interpretation-list strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--branco);
+    }
+
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .fit-column {
+      padding: 42px 58px 42px 0;
+    }
+
+    .fit-column + .fit-column {
+      padding-right: 0;
+      padding-left: 58px;
+      border-left: 1px solid var(--borda);
+    }
+
+    .fit-column h3 {
+      margin-bottom: 24px;
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+
+    .check-list,
+    .x-list {
+      display: grid;
+      gap: 15px;
+      list-style: none;
+    }
+
+    .check-list li,
+    .x-list li {
+      position: relative;
+      padding-left: 26px;
+      color: var(--texto);
+    }
+
+    .check-list li::before,
+    .x-list li::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-weight: 900;
+    }
 
     .check-list li::before {
       content: "✓";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background-color: rgba(25, 169, 116, 0.13);
-      color: var(--verde-escuro);
-      font-size: 0.85rem;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      color: var(--verde-600);
     }
 
     .x-list li::before {
-      content: "×";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background-color: rgba(220, 38, 38, 0.10);
-      color: #B91C1C;
-      font-size: 1rem;
-      font-weight: 900;
-      display: flex;
+      content: "—";
+      color: #9A5B5B;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
+      gap: 88px;
       align-items: center;
-      justify-content: center;
     }
 
-    .steps { counter-reset: step; display: grid; gap: 18px; }
-    .step { counter-increment: step; display: grid; grid-template-columns: auto 1fr; gap: 18px; background-color: var(--branco); border: 1px solid var(--borda); border-radius: var(--radius); padding: 26px; box-shadow: 0 12px 28px rgba(11, 31, 58, 0.06); }
-    .step::before { content: counter(step); width: 46px; height: 46px; border-radius: 50%; background-color: var(--azul-escuro); color: var(--branco); display: flex; align-items: center; justify-content: center; font-weight: 900; }
-
-    .about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 48px; align-items: center; }
-    .photo-card { background: linear-gradient(135deg, var(--azul-escuro), var(--azul-medio)); border-radius: 24px; padding: 16px; box-shadow: var(--sombra); }
-    .photo-card img { border-radius: 18px; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background-color: #D1D5DB; }
-    .credentials { display: grid; gap: 12px; margin-top: 24px; }
-    .credential { padding: 16px 18px; border-radius: 14px; background-color: var(--branco); border: 1px solid var(--borda); color: var(--cinza-texto); box-shadow: 0 10px 25px rgba(11, 31, 58, 0.05); }
-    .credential strong { color: var(--azul-escuro); }
-
-    .faq { max-width: 860px; margin: 0 auto; }
-    details { background-color: var(--branco); border: 1px solid var(--borda); border-radius: 16px; padding: 20px 22px; margin-bottom: 14px; box-shadow: 0 10px 30px rgba(11, 31, 58, 0.05); }
-    summary { cursor: pointer; font-weight: 900; color: var(--azul-escuro); list-style: none; display: flex; justify-content: space-between; gap: 20px; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; font-size: 1.35rem; color: var(--verde); line-height: 1; }
-    details[open] summary::after { content: "−"; }
-    details p { margin-top: 14px; }
-
-    .final-cta { background: linear-gradient(135deg, var(--azul-escuro), var(--azul-medio)); color: var(--branco); border-radius: 28px; padding: 58px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; box-shadow: var(--sombra); }
-    .final-cta h2 { color: var(--branco); margin-bottom: 12px; }
-    .final-cta p { color: #D6E2F0; max-width: 680px; }
-
-    .footer { padding: 36px 0; background-color: var(--azul-profundo); color: rgba(255, 255, 255, 0.72); font-size: 0.92rem; }
-    .footer-content { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    .footer strong { color: var(--branco); }
-
-    @media (max-width: 920px) {
-      .hero-grid, .about-grid, .final-cta { grid-template-columns: 1fr; }
-      .hero { padding-top: 138px; }
-      .grid-3, .grid-2 { grid-template-columns: 1fr; }
-      .final-cta { padding: 38px; }
-      .nav-links { display: none; }
+    .photo-frame {
+      position: relative;
+      padding: 12px;
+      border: 1px solid var(--borda);
+      background: var(--branco);
     }
 
-    @media (max-width: 560px) {
-      .section { padding: 68px 0; }
-      .hero-card, .card, .final-cta { padding: 24px; }
-      .btn, .btn-row { width: 100%; }
-      h1 { font-size: 2.35rem; }
-      h2 { font-size: 2.05rem; }
-      .eyebrow { font-size: 0.96rem; }
+    .photo-frame::after {
+      position: absolute;
+      right: -14px;
+      bottom: -14px;
+      z-index: -1;
+      width: 42%;
+      height: 36%;
+      content: "";
+      background: var(--verde-100);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      background: #D6DCE3;
+    }
+
+    .about-copy p {
+      max-width: 700px;
+      font-size: 1.12rem;
+    }
+
+    .about-copy p + p {
+      margin-top: 18px;
+    }
+
+    .credentials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 38px;
+      border-top: 1px solid var(--borda);
+    }
+
+    .credential {
+      padding: 20px 28px 20px 0;
+      border-bottom: 1px solid var(--borda);
+      color: var(--texto-suave);
+      font-size: 0.95rem;
+    }
+
+    .credential:nth-child(even) {
+      padding-right: 0;
+      padding-left: 28px;
+      border-left: 1px solid var(--borda);
+    }
+
+    .credential strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--azul-900);
+    }
+
+    .cta-section {
+      padding: 92px 0;
+    }
+
+    .final-cta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 50px;
+      align-items: center;
+      padding: 58px 62px;
+      background: var(--azul-900);
+    }
+
+    .final-cta h2 {
+      max-width: 760px;
+      margin-bottom: 14px;
+      color: var(--branco);
+      font-size: clamp(2.45rem, 4vw, 4rem);
+    }
+
+    .final-cta p {
+      max-width: 680px;
+      color: #C2D0DF;
+      font-size: 1.08rem;
+    }
+
+    .faq-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-heading {
+      margin-bottom: 38px;
+      text-align: center;
+    }
+
+    .faq-heading h2 {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .faq-heading p {
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: 1.08rem;
+    }
+
+    details {
+      border-top: 1px solid var(--borda);
+    }
+
+    details:last-child {
+      border-bottom: 1px solid var(--borda);
+    }
+
+    summary {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 0;
+      color: var(--azul-900);
+      cursor: pointer;
+      font-size: 1.08rem;
+      font-weight: 800;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      flex: 0 0 auto;
+      content: "+";
+      color: var(--verde-600);
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      max-width: 790px;
+      padding: 0 42px 26px 0;
+    }
+
+    .footer {
+      padding: 34px 0;
+      background: var(--azul-950);
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 0.9rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer strong {
+      color: var(--branco);
+    }
+
+    @media (max-width: 980px) {
+      .section {
+        padding: 88px 0;
+      }
+
+      .hero-grid,
+      .split-layout,
+      .comparison-intro,
+      .offer-layout,
+      .interpretation-layout,
+      .about-grid,
+      .final-cta {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 150px;
+      }
+
+      .hero-grid {
+        gap: 58px;
+      }
+
+      .hero-summary {
+        max-width: 720px;
+      }
+
+      .split-layout,
+      .offer-layout,
+      .interpretation-layout,
+      .about-grid {
+        gap: 56px;
+      }
+
+      .offer-copy {
+        position: static;
+      }
+
+      .process {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .process-step:nth-child(3) {
+        padding-left: 0;
+        border-top: 1px solid var(--borda);
+        border-left: 0;
+      }
+
+      .process-step:nth-child(4) {
+        border-top: 1px solid var(--borda);
+      }
+
+      .final-cta {
+        padding: 48px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 132px 0 88px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 14vw, 4.6rem);
+      }
+
+      h2 {
+        font-size: clamp(2.35rem, 10vw, 3.4rem);
+      }
+
+      .hero-summary {
+        margin-top: 0;
+        padding-left: 24px;
+      }
+
+      .issue-list,
+      .interpretation-list {
+        margin-top: 0;
+      }
+
+      .issue,
+      .feature {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .comparison,
+      .fit-grid,
+      .credentials {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison-column {
+        padding: 34px 28px;
+      }
+
+      .comparison-column + .comparison-column,
+      .fit-column + .fit-column,
+      .credential:nth-child(even) {
+        border-left: 0;
+      }
+
+      .comparison-column + .comparison-column {
+        border-top: 1px solid #D5D2C9;
+      }
+
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .process-step,
+      .process-step + .process-step,
+      .process-step:nth-child(3),
+      .process-step:nth-child(4) {
+        min-height: 0;
+        padding: 30px 0;
+        border-top: 0;
+        border-left: 0;
+      }
+
+      .process-step + .process-step {
+        border-top: 1px solid var(--borda);
+      }
+
+      .process-label {
+        margin-bottom: 18px;
+      }
+
+      .fit-column,
+      .fit-column + .fit-column {
+        padding: 32px 0;
+      }
+
+      .fit-column + .fit-column {
+        border-top: 1px solid var(--borda);
+      }
+
+      .credential,
+      .credential:nth-child(even) {
+        padding: 17px 0;
+      }
+
+      .final-cta {
+        padding: 38px 28px;
+      }
+
+      .btn,
+      .btn-row {
+        width: 100%;
+      }
     }
   </style>
 </head>
 
 <body>
-
   <!--
     ALTERAR WHATSAPP:
     Substitua todos os links https://wa.me/5500000000000 pelo seu número.
@@ -297,8 +964,9 @@
   <header class="header">
     <div class="container nav">
       <a href="#" class="logo">Victor Oliveira<span>.</span></a>
-      <nav class="nav-links">
-        <a href="#consultoria">Consultoria</a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#dre-gerencial">DRE Gerencial</a>
+        <a href="#implantacao">Implantação</a>
         <a href="#para-quem">Para quem é</a>
         <a href="#sobre">Quem sou eu</a>
         <a href="#faq">FAQ</a>
@@ -310,180 +978,277 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Consultoria financeira para e-commerce</span>
-          <!-- ALTERAR TEXTO PRINCIPAL -->
-          <h1>Você sente que seu e-commerce vende, mas ainda falta clareza sobre lucro, caixa e margem?</h1>
-          <p class="lead">Ajudo donos de e-commerce a entender seus números, identificar gargalos financeiros e tomar decisões mais seguras sobre lucro, caixa, margem e crescimento.</p>
+          <span class="eyebrow">Clareza financeira para e-commerce</span>
+          <h1>Seu e-commerce vende, mas você sabe para onde o dinheiro está indo?</h1>
+          <p class="hero-lead">Comece a tomar decisões com base em números. Estruturamos uma DRE Gerencial personalizada para mostrar quanto sua operação realmente lucra, onde o dinheiro está sendo consumido e quais pontos precisam de atenção.</p>
           <div class="btn-row">
-            <a href="https://wa.me/5500000000000?text=Olá,%20quero%20solicitar%20uma%20análise%20da%20minha%20empresa" class="btn btn-primary" target="_blank">Quero entender minha empresa</a>
-            <a href="#consultoria" class="btn btn-secondary">Como funciona</a>
+            <a href="https://wa.me/5500000000000?text=Olá,%20quero%20ter%20mais%20clareza%20sobre%20os%20números%20do%20meu%20e-commerce" class="btn btn-primary" target="_blank" rel="noopener">Quero mais clareza sobre meus números</a>
+            <a href="#dre-gerencial" class="btn btn-outline">Entender a solução</a>
           </div>
           <p class="hero-note">Contador formado pela Unioeste | Pós-graduando em Finanças e Controladoria</p>
         </div>
 
-        <aside class="hero-card">
-          <div class="hero-card-title">O que analisamos na prática</div>
-          <div class="metric-list">
-            <div class="metric"><strong>Lucro real</strong><span>Entendimento da rentabilidade além do faturamento.</span></div>
-            <div class="metric"><strong>Fluxo de caixa</strong><span>Leitura da geração de caixa e dos riscos de descasamento.</span></div>
-            <div class="metric"><strong>Margens e custos</strong><span>Análise de produtos, despesas, frete, comissões e operação.</span></div>
-            <div class="metric"><strong>Decisões de crescimento</strong><span>Expansão com mais segurança financeira e menos improviso.</span></div>
-          </div>
+        <aside class="hero-summary" aria-label="Benefícios da DRE Gerencial">
+          <h2 class="hero-summary-title">Uma visão do negócio que vai além das vendas.</h2>
+          <p class="hero-summary-intro">Com a estrutura certa, você passa a enxergar:</p>
+          <ul class="summary-list">
+            <li><strong>Quanto realmente sobra</strong><span>O resultado depois de custos, taxas, impostos e despesas.</span></li>
+            <li><strong>Onde a margem é consumida</strong><span>Os pontos que mais pressionam a rentabilidade da operação.</span></li>
+            <li><strong>O que precisa de atenção</strong><span>Informações que ajudam a priorizar as próximas decisões.</span></li>
+          </ul>
         </aside>
       </div>
     </section>
 
-    <section class="section section-blue">
-      <div class="container">
-        <div class="section-intro">
+    <section class="section">
+      <div class="container split-layout">
+        <div class="split-copy">
           <span class="eyebrow">O problema</span>
-          <h2>Vender mais nem sempre significa ganhar mais.</h2>
-          <p>Muitos e-commerces crescem em faturamento, aumentam o volume de pedidos, investem mais em tráfego e ampliam estoque. Mas, mesmo assim, o lucro não aparece com a mesma força.</p>
+          <h2>Vender mais não significa, necessariamente, ganhar mais.</h2>
+          <p>Muitos e-commerces acompanham faturamento, pedidos e saldo bancário todos os dias. Mesmo assim, continuam sem uma resposta segura para a pergunta mais importante: a operação realmente está gerando lucro?</p>
         </div>
-        <div class="grid-3">
-          <div class="card"><div class="card-icon">01</div><h3>Faturamento sem lucro</h3><p>Crescer em vendas sem entender margens, custos e despesas pode esconder problemas importantes na operação.</p></div>
-          <div class="card"><div class="card-icon">02</div><h3>Caixa apertado</h3><p>Mesmo vendendo, a empresa pode sofrer com falta de caixa por estoque, prazos, despesas e decisões sem planejamento financeiro.</p></div>
-          <div class="card"><div class="card-icon">03</div><h3>Decisões pelo feeling</h3><p>Sem indicadores confiáveis, decisões sobre anúncios, estoque, preço e crescimento acabam dependendo mais de percepção do que de números.</p></div>
+
+        <div class="issue-list">
+          <article class="issue">
+            <h3>O faturamento cresce</h3>
+            <p>Mas o aumento das vendas também traz taxas, mídia, fretes, impostos, equipe e outros custos que podem consumir o resultado.</p>
+          </article>
+          <article class="issue">
+            <h3>Os dados existem</h3>
+            <p>Mas ficam espalhados entre plataforma, marketplace, gateway, contabilidade, extratos e controles internos.</p>
+          </article>
+          <article class="issue">
+            <h3>As decisões não podem esperar</h3>
+            <p>Preço, estoque, tráfego e crescimento acabam sendo definidos com uma visão incompleta da realidade financeira.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="consultoria">
+    <section class="section section-warm" id="dre-gerencial">
       <div class="container">
-        <div class="section-intro">
-          <span class="eyebrow">A consultoria</span>
-          <h2>Uma consultoria para transformar números em decisões.</h2>
-          <p>A consultoria financeira para e-commerce é um trabalho personalizado para ajudar você a enxergar com mais clareza a realidade financeira da sua operação.</p>
+        <div class="comparison-intro">
+          <span class="eyebrow">O que é uma DRE Gerencial?</span>
+          <h2>Sua contabilidade talvez já entregue uma DRE. Mas o objetivo dela pode ser diferente.</h2>
+          <p>A DRE contábil e a DRE Gerencial não competem entre si. Elas se complementam. A diferença está na forma como a informação é organizada e no uso que o empresário faz dela.</p>
         </div>
-        <div class="grid-3">
-          <div class="card"><div class="card-icon">?</div><h3>Minha empresa é lucrativa?</h3><p>Análise da rentabilidade da operação, considerando custos, despesas, margem e estrutura financeira.</p></div>
-          <div class="card"><div class="card-icon">?</div><h3>Onde o dinheiro está preso?</h3><p>Entendimento de gargalos relacionados a caixa, estoque, prazos, despesas e capital de giro.</p></div>
-          <div class="card"><div class="card-icon">?</div><h3>Quais produtos e canais geram resultado?</h3><p>Avaliação de produtos, categorias ou canais que podem contribuir mais ou menos para o resultado financeiro.</p></div>
+
+        <div class="comparison">
+          <article class="comparison-column">
+            <span class="comparison-label">Visão contábil</span>
+            <h3>DRE Contábil</h3>
+            <ul class="plain-list">
+              <li>É elaborada visando o usuário externo (governo, bancos, fornecedores, investidores etc.).</li>
+              <li>Apresenta o resultado da empresa com base nas normas contábeis.</li>
+              <li>Segue a estrutura padrão dos critérios contábeis e legais aplicáveis, não sendo personalizável.</li>
+              <li>Possui limitação no nível de detalhamento.</li>
+              <li>É essencial para conformidade, não para tomada de decisão.</li>
+            </ul>
+          </article>
+
+          <article class="comparison-column">
+            <span class="comparison-label">Visão para decisão</span>
+            <h3>DRE Gerencial</h3>
+            <ul class="plain-list">
+              <li>É elaborada visando o usuário interno que precisa tomar as decisões da empresa (sócio, diretor, gestor etc.).</li>
+              <li>Apresenta o resultado conforme a necessidade da empresa.</li>
+              <li>É personalizada para cada modelo de negócio, inclusive e-commerce.</li>
+              <li>Pode exprimir o máximo de detalhe das contas mais relevantes.</li>
+              <li>Pode separar canais, categorias ou unidades quando os dados permitirem.</li>
+              <li>Evidencia receitas, margens, custos fixos e variáveis, representatividade, tendências e resultados relevantes.</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="comparison-note">A contabilidade mostra o resultado conforme os registros e normas contábeis. A DRE Gerencial transforma esses dados em uma leitura voltada à administração do negócio.</p>
+      </div>
+    </section>
+
+    <section class="section" id="implantacao">
+      <div class="container offer-layout">
+        <div class="offer-copy">
+          <span class="eyebrow">A solução</span>
+          <h2>Uma DRE construída para a forma como seu e-commerce funciona.</h2>
+          <p>O trabalho transforma informações dispersas em uma estrutura clara e personalizada, que pode ser utilizada para acompanhar o resultado da operação ao longo dos meses.</p>
+        </div>
+
+        <div class="feature-list">
+          <article class="feature">
+            <h3>Plano de contas gerencial</h3>
+            <p>Receitas, deduções, custos e despesas organizados em categorias que façam sentido para o seu negócio.</p>
+          </article>
+          <article class="feature">
+            <h3>Lucro e margens</h3>
+            <p>Visão da receita líquida, margem bruta, margem de contribuição e resultado final, conforme a estrutura definida.</p>
+          </article>
+          <article class="feature">
+            <h3>Custos e despesas</h3>
+            <p>Separação de mercadorias, fretes, taxas, comissões, mídia, tecnologia, equipe e demais gastos relevantes.</p>
+          </article>
+          <article class="feature">
+            <h3>Canais de venda</h3>
+            <p>Possibilidade de analisar site próprio, marketplaces ou unidades de negócio separadamente, quando os dados disponíveis permitirem.</p>
+          </article>
+          <article class="feature">
+            <h3>Acompanhamento mensal</h3>
+            <p>Entrega de uma estrutura organizada para que o resultado possa ser atualizado, comparado e analisado de forma recorrente.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section section-green">
+    <section class="section section-neutral">
       <div class="container">
-        <div class="section-intro">
-          <span class="eyebrow">Áreas analisadas</span>
-          <h2>A análise é personalizada para a realidade de cada empresa.</h2>
-          <p>Não existe um pacote engessado de entregáveis. A profundidade e o foco da análise dependem do momento do negócio, dos dados disponíveis e dos principais desafios da operação.</p>
-        </div>
-        <div class="grid-3">
-          <div class="card"><div class="card-icon">01</div><h3>Rentabilidade e lucro</h3><p>Entendimento da lucratividade da operação e da conversão do faturamento em resultado.</p></div>
-          <div class="card"><div class="card-icon">02</div><h3>Caixa e capital de giro</h3><p>Análise da dinâmica do caixa, necessidade de capital de giro e gargalos financeiros.</p></div>
-          <div class="card"><div class="card-icon">03</div><h3>Precificação e margem</h3><p>Avaliação de preços, custos, taxas, fretes, impostos e impactos na margem.</p></div>
-          <div class="card"><div class="card-icon">04</div><h3>Produtos e canais</h3><p>Leitura de produtos, categorias e canais de venda sob a ótica de resultado financeiro.</p></div>
-          <div class="card"><div class="card-icon">05</div><h3>Endividamento e riscos</h3><p>Identificação de compromissos, dívidas e riscos que podem limitar o crescimento.</p></div>
-          <div class="card"><div class="card-icon">06</div><h3>Indicadores financeiros</h3><p>Definição e interpretação dos indicadores que ajudam a acompanhar a saúde financeira da empresa.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-light">
-      <div class="container">
-        <div class="section-intro">
+        <div class="section-heading">
           <span class="eyebrow">Como funciona</span>
-          <h2>Um processo objetivo, com foco em entendimento e decisão.</h2>
-          <p>A consultoria é conduzida em etapas para entender a realidade do negócio antes de propor qualquer direcionamento.</p>
+          <h2>Da coleta dos dados à interpretação dos resultados.</h2>
+          <p>A implantação acontece em etapas para que a ferramenta reflita a realidade do negócio e seja compreendida por quem tomará as decisões.</p>
         </div>
-        <div class="steps">
-          <div class="step"><div><h3>Conversa inicial</h3><p>Entendimento do negócio, momento atual, principais desafios e objetivos do empresário.</p></div></div>
-          <div class="step"><div><h3>Análise financeira da operação</h3><p>Avaliação dos dados disponíveis conforme a estrutura e maturidade financeira da empresa.</p></div></div>
-          <div class="step"><div><h3>Apresentação dos achados</h3><p>Discussão dos principais gargalos, riscos, oportunidades e pontos de atenção identificados.</p></div></div>
-          <div class="step"><div><h3>Próximos passos</h3><p>Definição de possíveis caminhos e, se fizer sentido, possibilidade de acompanhamento posterior.</p></div></div>
+
+        <div class="process">
+          <article class="process-step">
+            <span class="process-label">Etapa 1</span>
+            <h3>Mapeamento da operação</h3>
+            <p>Entendimento dos canais, relatórios, taxas, custos, despesas e controles existentes.</p>
+          </article>
+          <article class="process-step">
+            <span class="process-label">Etapa 2</span>
+            <h3>Organização dos dados</h3>
+            <p>Definição da estrutura gerencial e classificação das informações que formarão a DRE.</p>
+          </article>
+          <article class="process-step">
+            <span class="process-label">Etapa 3</span>
+            <h3>Construção da DRE</h3>
+            <p>Montagem da ferramenta com receitas, deduções, custos, margens, despesas e resultado.</p>
+          </article>
+          <article class="process-step">
+            <span class="process-label">Etapa 4</span>
+            <h3>Apresentação e orientação</h3>
+            <p>Explicação da estrutura, dos principais achados e da forma correta de acompanhar os números.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section section-green">
-      <div class="container">
-        <div class="grid-2">
-          <div>
-            <span class="eyebrow">Diferencial</span>
-            <h2>Não entrego apenas números. Entrego interpretação.</h2>
-            <p>Muitos empresários possuem dados, planilhas, relatórios e informações de venda. O desafio é entender o que esses números dizem sobre a operação e quais decisões devem ser tomadas.</p>
-          </div>
-          <div class="card">
-            <h3>A consultoria não é:</h3>
-            <ul class="x-list">
-              <li>Uma análise automática feita por IA.</li>
-              <li>Um relatório genérico igual para todos.</li>
-              <li>Apenas contabilidade tradicional.</li>
-            </ul>
-            <h3 style="margin-top: 28px;">A consultoria é:</h3>
-            <ul class="check-list">
-              <li>Uma análise personalizada da realidade financeira da empresa.</li>
-              <li>Um trabalho de interpretação e tomada de decisão.</li>
-              <li>Um apoio estratégico para crescer com mais controle.</li>
-            </ul>
-          </div>
+    <section class="section dark-section">
+      <div class="container interpretation-layout">
+        <div class="interpretation-copy">
+          <span class="eyebrow">O diferencial</span>
+          <h2>Não entrego apenas uma planilha com números. Entrego poder de decisão.</h2>
+          <p>A implantação não termina quando a planilha fica pronta. Você recebe uma apresentação da DRE Gerencial, entende como interpretar cada parte da ferramenta e conhece os principais pontos identificados durante o trabalho.</p>
+          <p>A análise é conduzida por um profissional com formação contábil, especialização em finanças e experiência com análise de empresas. A DRE passa a funcionar como apoio, subsídio e alicerce para decisões mais conscientes.</p>
         </div>
+
+        <ul class="interpretation-list">
+          <li><strong>Apresentação dos resultados</strong>Explicação clara da estrutura e dos números apurados.</li>
+          <li><strong>Principais achados</strong>Destaque dos pontos que mais influenciam o resultado da operação.</li>
+          <li><strong>Riscos e pontos de atenção</strong>Leitura dos itens que exigem acompanhamento ou aprofundamento.</li>
+          <li><strong>Oportunidades de melhoria</strong>Insights financeiros identificados a partir dos dados disponíveis.</li>
+          <li><strong>Orientação para uso</strong>Base para que a ferramenta continue apoiando a gestão mensal.</li>
+        </ul>
       </div>
     </section>
 
-    <section class="section section-blue" id="para-quem">
+    <section class="section" id="para-quem">
       <div class="container">
-        <div class="section-intro">
+        <div class="section-heading section-heading--center">
           <span class="eyebrow">Para quem é</span>
-          <h2>Indicada para empresários que querem crescer com mais controle.</h2>
-          <p>A consultoria é mais adequada para operações que já possuem vendas recorrentes e precisam aprofundar a gestão financeira.</p>
+          <h2>Para e-commerces que já vendem, mas ainda não enxergam o resultado com clareza.</h2>
+          <p>O serviço é indicado principalmente para operações com vendas recorrentes e faturamento acima de R$ 50 mil por mês, que precisam profissionalizar a leitura financeira do negócio.</p>
         </div>
-        <div class="grid-2">
-          <div class="card"><h3>Essa consultoria é para você se:</h3><ul class="check-list"><li>Seu e-commerce já possui operação validada.</li><li>Você quer crescer com segurança.</li><li>Quer entender melhor lucro e caixa.</li><li>Precisa tomar decisões baseadas em números.</li></ul></div>
-          <div class="card"><h3>Não é para você se:</h3><ul class="x-list"><li>Procura apenas contabilidade.</li><li>Busca somente planejamento tributário.</li><li>Quer uma solução automática e genérica.</li></ul></div>
+
+        <div class="fit-grid">
+          <div class="fit-column">
+            <h3>Faz sentido para você se:</h3>
+            <ul class="check-list">
+              <li>Seu e-commerce já possui uma operação validada.</li>
+              <li>Você não sabe com precisão quanto a empresa lucra por mês.</li>
+              <li>Os dados estão espalhados entre diferentes sistemas e controles.</li>
+              <li>Você quer saber o que está consumindo o seu lucro.</li>
+              <li>Precisa tomar decisões com base em números confiáveis, e não em achismo.</li>
+            </ul>
+          </div>
+
+          <div class="fit-column">
+            <h3>Provavelmente não é o momento se:</h3>
+            <ul class="x-list">
+              <li>O negócio ainda não possui vendas recorrentes.</li>
+              <li>Você procura apenas contabilidade fiscal ou planejamento tributário.</li>
+              <li>Espera uma solução automática sem organizar e validar os dados.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section section-light" id="sobre">
+    <section class="section section-neutral" id="sobre">
       <div class="container about-grid">
-        <div class="photo-card">
+        <div class="photo-frame">
           <!-- ALTERAR FOTO: substitua o src abaixo pela foto do Victor -->
-          <img src="victor.oliveira.jpeg"
- alt="Foto de Victor Oliveira" />
+          <img src="https://via.placeholder.com/600x750.png?text=Foto+Victor+Oliveira" alt="Foto de Victor Oliveira" />
         </div>
-        <div>
-          <span class="eyebrow">Quem sou eu</span>
+
+        <div class="about-copy">
+          <span class="eyebrow">Quem conduz o trabalho</span>
           <h2>Victor Oliveira</h2>
           <p>Sou contador formado pela Unioeste, pós-graduando em Finanças e Controladoria, com quase 5 anos de experiência atuando com análise de empresas, contabilidade e informações financeiras.</p>
-          <p style="margin-top: 16px;">Meu foco é ajudar empresas a utilizarem seus números para tomar decisões melhores, conectando informações contábeis, financeiras e gerenciais à realidade da operação.</p>
+          <p>Meu foco é ajudar empresas a utilizarem seus números para tomar decisões melhores. Na implantação da DRE Gerencial, conecto informações contábeis, financeiras e operacionais para construir uma leitura clara do resultado do e-commerce.</p>
+
           <div class="credentials">
-            <div class="credential"><strong>Formação:</strong> Contador formado pela Unioeste.</div>
-            <div class="credential"><strong>Especialização:</strong> Pós-graduando em Finanças e Controladoria.</div>
-            <div class="credential"><strong>Experiência:</strong> Quase 5 anos atendendo empresas com análise, contabilidade e informações financeiras.</div>
-            <div class="credential"><strong>Foco:</strong> Ajudar empresas a utilizarem números para tomar decisões melhores.</div>
+            <div class="credential"><strong>Formação</strong>Contador formado pela Unioeste.</div>
+            <div class="credential"><strong>Especialização</strong>Pós-graduando em Finanças e Controladoria.</div>
+            <div class="credential"><strong>Experiência</strong>Quase 5 anos atuando com análise, contabilidade e informações financeiras.</div>
+            <div class="credential"><strong>Objetivo</strong>Transformar números em informações úteis para a tomada de decisão.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="faq">
-      <div class="container">
-        <div class="section-intro" style="margin-left: auto; margin-right: auto; text-align: center;">
-          <span class="eyebrow">FAQ</span>
-          <h2>Perguntas frequentes</h2>
-          <p>Veja as principais dúvidas sobre a consultoria financeira para e-commerce.</p>
-        </div>
-        <div class="faq">
-          <details><summary>A consultoria substitui minha contabilidade?</summary><p>Não. A consultoria não substitui a contabilidade regular da empresa. O foco é análise financeira, interpretação dos números e apoio à tomada de decisão.</p></details>
-          <details><summary>Preciso ter todos os relatórios financeiros organizados?</summary><p>Não necessariamente. Ter relatórios organizados ajuda, mas a consultoria também pode começar identificando quais informações existem e quais precisam ser estruturadas.</p></details>
-          <details><summary>Serve para empresas pequenas?</summary><p>Sim, desde que a empresa já tenha uma operação validada e necessidade real de entender melhor seus números.</p></details>
-          <details><summary>Vocês fazem gestão financeira completa?</summary><p>A proposta principal é consultiva: análise, diagnóstico e direcionamento financeiro. Caso a empresa precise de uma gestão financeira recorrente ou operacional, isso pode ser avaliado separadamente.</p></details>
-          <details><summary>Quanto custa?</summary><p>O investimento depende da complexidade da operação, profundidade da análise e necessidades específicas da empresa. Após uma conversa inicial é possível definir o melhor formato.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
+    <section class="cta-section">
       <div class="container">
         <div class="final-cta">
           <div>
-            <h2>Quer entender melhor a saúde financeira do seu e-commerce?</h2>
-            <p>Solicite uma análise inicial para avaliar o momento da sua empresa e entender como a consultoria pode ajudar.</p>
+            <h2>Quer entender quanto seu e-commerce realmente lucra?</h2>
+            <p>Solicite uma conversa inicial para entender como uma DRE Gerencial personalizada pode trazer mais clareza sobre margens, custos, despesas e resultado.</p>
           </div>
-          <a href="https://wa.me/5500000000000?text=Olá,%20quero%20solicitar%20uma%20análise%20da%20minha%20empresa" class="btn btn-primary" target="_blank">Solicitar uma análise da minha empresa</a>
+          <a href="https://wa.me/5500000000000?text=Olá,%20quero%20ter%20mais%20clareza%20sobre%20os%20números%20do%20meu%20e-commerce" class="btn btn-primary" target="_blank" rel="noopener">Quero mais clareza sobre meus números</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-warm" id="faq">
+      <div class="container faq-wrap">
+        <div class="faq-heading">
+          <span class="eyebrow">Perguntas frequentes</span>
+          <h2>Antes de começarmos</h2>
+          <p>Respostas para as principais dúvidas sobre a estruturação e implantação da DRE Gerencial.</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>A DRE Gerencial substitui a contabilidade?</summary>
+            <p>Não. A DRE Gerencial complementa o trabalho contábil com uma visão voltada à administração do negócio. As obrigações contábeis e fiscais continuam sendo responsabilidade da contabilidade da empresa.</p>
+          </details>
+          <details>
+            <summary>Preciso ter todos os dados organizados?</summary>
+            <p>Não necessariamente. Parte do trabalho consiste em mapear as informações disponíveis e definir como elas devem ser organizadas. A qualidade e a disponibilidade dos dados determinam o nível de detalhamento possível.</p>
+          </details>
+          <details>
+            <summary>Quais informações normalmente são necessárias?</summary>
+            <p>Podem ser utilizados relatórios de vendas, cancelamentos, taxas, impostos, custo das mercadorias, fretes, mídia, folha, sistemas, extratos e demais despesas da operação, além das informações fornecidas pela contabilidade.</p>
+          </details>
+          <details>
+            <summary>Como funciona a apresentação da DRE após a implantação?</summary>
+            <p>Ao final da implantação, a DRE é apresentada em uma reunião, com a explicação da estrutura, dos principais indicadores e dos achados identificados. O objetivo é mostrar o que os números revelam sobre a operação e destacar os pontos que merecem atenção.</p>
+          </details>
+          <details>
+            <summary>A implantação inclui atualização mensal?</summary>
+            <p>O serviço principal contempla a estruturação e a implantação da DRE Gerencial, além da orientação para uso. Um acompanhamento recorrente pode ser avaliado separadamente, caso a empresa precise.</p>
+          </details>
+          <details>
+            <summary>Quanto custa?</summary>
+            <p>O investimento depende da quantidade de canais, da complexidade da operação, da organização dos dados e do nível de detalhamento necessário. Após uma conversa inicial é possível definir o escopo e o valor da implantação.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -491,11 +1256,9 @@
 
   <footer class="footer">
     <div class="container footer-content">
-      <div><strong>Victor Oliveira</strong> — Consultoria financeira para e-commerce</div>
+      <div><strong>Victor Oliveira</strong> — Clareza financeira para e-commerce por meio da DRE Gerencial.</div>
       <div>© 2026. Todos os direitos reservados.</div>
     </div>
   </footer>
 </body>
 </html>
-
-
